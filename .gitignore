@@ -1,0 +1,9 @@
+﻿.venv/
+__pycache__/
+tools/
+config.json
+nomes_apps.json
+registros/
+Nova pasta/
+.git-pessoal/
+.git-forest/
