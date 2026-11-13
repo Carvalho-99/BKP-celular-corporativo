@@ -2,10 +2,12 @@
 import shlex
 import subprocess
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path  # noqa: F401 - usado por quem importa este módulo
 
-RAIZ = Path(__file__).resolve().parent.parent
-ADB = RAIZ / "tools" / "platform-tools" / "adb.exe"
+from . import locais
+
+RAIZ = locais.PROJETO
+ADB = locais.adb()
 
 _SEM_JANELA = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 

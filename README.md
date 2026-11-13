@@ -113,7 +113,24 @@ provável. Para desligar a consulta, mude `CONSULTAR_PLAY_STORE` em `backup\nome
 - Conversas do WhatsApp em texto: o banco é criptografado. Para ler, restaure o
   backup em outro aparelho com o chip da linha (passo a passo no relatório).
 
-## Instalar em outro computador
+## Executável
+
+O programa pode virar um arquivo único, `dist\Backup Corporativo.exe`, que abre com dois
+cliques e não precisa de Python instalado:
+
+```
+.venv\Scripts\python construir_exe.py
+```
+
+O executável já leva o ADB dentro. Na primeira vez que abre, ele copia o ADB para
+`%LOCALAPPDATA%\Backup Corporativo`, que é também onde ficam a configuração e os registros.
+Para usar em outro computador, basta copiar o `.exe`.
+
+Como o arquivo não é assinado, o Windows pode mostrar o aviso "O Windows protegeu o
+computador" na primeira execução (Mais informações > Executar assim mesmo), e alguns
+antivírus podem acusar falso positivo.
+
+## Instalar em outro computador (pelo código)
 
 Precisa de Python 3.11 ou mais novo.
 

@@ -7,3 +7,7 @@ registros/
 Nova pasta/
 .git-pessoal/
 .git-forest/
+dist/
+build/
+recursos/
+autoteste.txt

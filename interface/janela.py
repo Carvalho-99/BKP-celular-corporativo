@@ -10,13 +10,13 @@ from tkinter import filedialog, messagebox
 
 import customtkinter as ctk
 
-from backup import adb, cobertura, conectores, executar, whatsapp
+from backup import adb, cobertura, conectores, executar, locais, whatsapp
 
 from . import estado, icones, tema
 from .componentes import Botao, Campo, Cartao, Opcao, PainelDeLog, Selo, Verificacao, texto
 from .icones import icone
 
-CONFIG = Path(__file__).resolve().parent.parent / "config.json"
+CONFIG = locais.CONFIG
 _BARRA_DE_ROLAGEM = 18
 _MOLDURA_DA_JANELA = 40  # barra de título e bordas, que o Windows soma à altura pedida
 _CONSULTAS_POR_IPHONE = 3  # a busca por iPhone é mais pesada: roda a cada 3 consultas do Android
@@ -66,6 +66,9 @@ class Janela(executar.Tela):
         tema.reiniciar()
         icones.reiniciar()
         raiz.title("Backup corporativo")
+        if locais.ICONE.exists():
+            # o customtkinter troca o ícone logo depois de abrir; o nosso entra em seguida
+            raiz.after(250, lambda: raiz.iconbitmap(str(locais.ICONE)))
         raiz.configure(fg_color=tema.FUNDO)
         raiz.minsize(*tema.JANELA_MINIMA)
         self._montar()
@@ -915,6 +918,7 @@ class Janela(executar.Tela):
 
 
 def abrir():
+    locais.preparar()
     raiz = ctk.CTk()
     Janela(raiz)
     raiz.mainloop()

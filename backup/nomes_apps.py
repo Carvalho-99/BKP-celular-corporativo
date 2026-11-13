@@ -10,9 +10,10 @@ import re
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
 
-CACHE = Path(__file__).resolve().parent.parent / "nomes_apps.json"
+from . import locais
+
+CACHE = locais.NOMES_DE_APPS
 CONSULTAR_PLAY_STORE = True
 
 _TITULO = re.compile(r"<title[^>]*>(.*?)</title>", re.DOTALL)

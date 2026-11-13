@@ -6,7 +6,8 @@ o método usado e o motivo quando não deu certo.
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from pathlib import Path
+
+from . import locais
 
 COLETADO = "Coletado"
 NAO_ENCONTRADO = "Não encontrado"  # a consulta funcionou, mas o aparelho não tem o dado
@@ -19,7 +20,7 @@ GRUPO_APARELHO = "Aparelho"
 GRUPO_CHIPS = "Chips e linha"
 GRUPO_USUARIO = "Usuário e contas"
 
-PASTA_DE_REGISTROS = Path(__file__).resolve().parent.parent / "registros"
+PASTA_DE_REGISTROS = locais.REGISTROS
 
 _NEGADO = re.compile(
     r"SecurityException|Permission Denial|Permission denied|requires android\.permission|not allowed to",
